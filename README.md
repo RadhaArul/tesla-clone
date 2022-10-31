@@ -4,7 +4,7 @@ Tesla Clone is a  Responsive web design using ReactJs, Redux for state managemen
 
 I designed this project during my internship period at [Lexicon AB](https://www.lexicon.se/) to develop my skills in Frontend development.
 
-# Resources
+## Resources
 I created this project through my own knowledge and  knowledge I gained from these Youtube channels given below
 
 [Clever Programmer](https://www.youtube.com/c/CleverProgrammer)
