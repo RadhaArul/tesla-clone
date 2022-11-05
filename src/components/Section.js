@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import Fade from "react-reveal/Fade";
 
 function Section({
   title,
@@ -10,15 +11,19 @@ function Section({
 }) {
   return (
     <SectionContainer bgImg={backgroundImage}>
-      <TextItem>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </TextItem>
+      <Fade bottom>
+        <TextItem>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </TextItem>
+      </Fade>
       <Buttons>
-        <ButtonGroup>
-          <LeftButton>{leftBtnText}</LeftButton>
-          {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
-        </ButtonGroup>
+        <Fade bottom>
+          <ButtonGroup>
+            <LeftButton>{leftBtnText}</LeftButton>
+            {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+          </ButtonGroup>
+        </Fade>
         <Arrow src="/images/down-arrow.svg"></Arrow>
       </Buttons>
     </SectionContainer>
