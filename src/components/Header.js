@@ -13,7 +13,7 @@ function Header() {
   const sideMenus = useSelector(selectsideMenus);
   return (
     <Container>
-      <a href="index.html">
+      <a href="/">
         <img src="/images/logo.svg" alt="" />
       </a>
       <Menu>
@@ -23,7 +23,7 @@ function Header() {
               {car}{" "}
             </a>
           ))} */}
-        <a href="#">Model S</a>
+        <a href="/models">Model S</a>
         <a href="#">Model 3</a>
         <a href="#">Model X</a>
         <a href="#">Model Y</a>
