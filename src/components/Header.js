@@ -24,7 +24,7 @@ function Header() {
             </a>
           ))} */}
         <a href="/models">Model S</a>
-        <a href="#">Model 3</a>
+        <a href="/model3">Model 3</a>
         <a href="#">Model X</a>
         <a href="#">Model Y</a>
         <a href="#">Solar Roof</a>

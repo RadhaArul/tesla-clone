@@ -4,7 +4,6 @@ import Section from "./Section";
 
 function Home() {
   return (
-    <div>
       <Container>
         <Section
           title="Model S"
@@ -55,7 +54,6 @@ function Home() {
           leftBtnText="Shop Now"
         />
       </Container>
-    </div>
   );
 }
 

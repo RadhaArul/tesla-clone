@@ -8,10 +8,15 @@ function Section({
   backgroundImage,
   leftBtnText,
   rightBtnText,
-  range,
-  speed,
-  topspeed,
-  mph,
+  desc1a,
+  desc1b,
+  desc2a,
+  desc2b,
+  desc3a,
+  desc3b,
+  desc4a,
+  desc4b,
+  detailBtnText,
 }) {
   return (
     <SectionContainer bgImg={backgroundImage}>
@@ -23,37 +28,33 @@ function Section({
       </Fade>
       <Buttons>
         <Fade bottom>
-          {leftBtnText && (
-            <ButtonGroup>
-              <LeftButton>{leftBtnText}</LeftButton>
-              {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
-            </ButtonGroup>
-          )}
+          <ButtonGroup>
+            {leftBtnText && <LeftButton>{leftBtnText}</LeftButton>}
+            {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+          </ButtonGroup>
           <DetailsButtonGroups>
-            <WrapGroup>
+            <Wrape>
+              <h1>{desc1a}</h1>
+              <p>{desc1b}</p>
+            </Wrape>
+            <Wrape>
+              <h1>{desc2a}</h1>
+              <p>{desc2b}</p>
+            </Wrape>
+            <Wrape>
+              <h1>{desc3a}</h1>
+              <p>{desc3b}</p>
+            </Wrape>
+            <SmallScreen>
               <Wrape>
-                <h1>{range}</h1>
-                {range && <p>Range(EPA est.)</p>}
+                {desc4a && <h1>{desc4a}</h1>}
+                {desc4b && <p>{desc4b}</p>}
               </Wrape>
-              <Wrape>
-                <h1>{speed}</h1>
-                {speed && <p>0-60 mph*</p>}
-              </Wrape>
-              <Wrape>
-                <h1>{topspeed}</h1>
-                {topspeed && <p>Top Speed*</p>}
-              </Wrape>
-              <SmallScreen>
-                <Wrape>
-                  {mph && <h1>{mph}</h1>}
-                  {mph && <p>Peak Power</p>}
-                </Wrape>
-              </SmallScreen>
-            </WrapGroup>
-            {range && <RightButton>Order Now</RightButton>}
+            </SmallScreen>
+            {detailBtnText && <OrderNow>{detailBtnText}</OrderNow>}
           </DetailsButtonGroups>
         </Fade>
-        <Arrow src="/images/down-arrow.svg"></Arrow>
+        <Arrow src="/images/down-arrow.svg" />
       </Buttons>
     </SectionContainer>
   );
@@ -66,7 +67,10 @@ const animate = keyframes`
   40%{transform:translateY(5px);}
   60%{transform:translateY(3px);}
 `;
-const Buttons = styled.div``;
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const Arrow = styled.img`
   height: 40px;
   animation-name: ${animate};
@@ -76,10 +80,10 @@ const Arrow = styled.img`
 
 const ButtonGroup = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-bottom: 30px;
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     flex-direction: column;
   }
 `;
@@ -97,6 +101,9 @@ const LeftButton = styled.div`
   font-size: 12px;
   margin: 10px;
   cursor: pointer;
+  @media (max-width: 600px) {
+    width: 400px;
+  }
 `;
 const RightButton = styled(LeftButton)`
   background: white;
@@ -129,13 +136,6 @@ const SmallScreen = styled.div`
     display: none;
   }
 `;
-const WrapGroup = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-  cursor: pointer;
-`;
 
 const Wrape = styled.div`
   height: 40px;
@@ -155,9 +155,19 @@ const Wrape = styled.div`
 
 const DetailsButtonGroups = styled.div`
   display: flex;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  cursor: pointer;
+`;
+
+const OrderNow = styled.div`
+  height: 40px;
+  width: 200px;
+  font-size: 14px;
+  color: white;
+  border: 4px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
