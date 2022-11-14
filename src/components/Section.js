@@ -32,27 +32,48 @@ function Section({
             {leftBtnText && <LeftButton>{leftBtnText}</LeftButton>}
             {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
           </ButtonGroup>
-          <DetailsButtonGroups>
-            <Wrape>
-              <h1>{desc1a}</h1>
-              <p>{desc1b}</p>
-            </Wrape>
-            <Wrape>
-              <h1>{desc2a}</h1>
-              <p>{desc2b}</p>
-            </Wrape>
-            <Wrape>
-              <h1>{desc3a}</h1>
-              <p>{desc3b}</p>
-            </Wrape>
-            <SmallScreen>
-              <Wrape>
-                {desc4a && <h1>{desc4a}</h1>}
-                {desc4b && <p>{desc4b}</p>}
-              </Wrape>
-            </SmallScreen>
+          <DetailsGroup>
+            <DetailsButtonGroups>
+              <Wrap>
+                <DescA>
+                  <h1>{desc1a}</h1>
+                </DescA>
+                <DescB>
+                  <p>{desc1b}</p>
+                </DescB>
+              </Wrap>
+              <Wrap>
+                <DescA>
+                  <h1>{desc2a}</h1>
+                </DescA>
+                <DescB>
+                  <p>{desc2b}</p>
+                </DescB>
+              </Wrap>
+              <Wrap>
+                <DescA>
+                  <h1>{desc3a}</h1>
+                </DescA>
+                <DescB>
+                  <p>{desc3b}</p>
+                </DescB>
+              </Wrap>
+              <SmallScreen>
+                {desc4a && (
+                  <Wrap>
+                    <DescA>
+                      <h1>{desc4a}</h1>
+                    </DescA>
+
+                    <DescB>
+                      <p>{desc4b}</p>
+                    </DescB>
+                  </Wrap>
+                )}
+              </SmallScreen>
+            </DetailsButtonGroups>
             {detailBtnText && <OrderNow>{detailBtnText}</OrderNow>}
-          </DetailsButtonGroups>
+          </DetailsGroup>
         </Fade>
         <Arrow src="/images/down-arrow.svg" />
       </Buttons>
@@ -82,7 +103,7 @@ const ButtonGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  //margin-bottom: 30px;
   @media (max-width: 600px) {
     flex-direction: column;
   }
@@ -129,36 +150,71 @@ const SectionContainer = styled.div`
   align-items: center;
 `;
 const SmallScreen = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   @media (max-width: 768px) {
     display: none;
   }
 `;
 
-const Wrape = styled.div`
+const Wrap = styled.div`
   height: 40px;
   width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  @media (max-width: 768px) {
+    width: 120px;
+  }
+`;
+const DescA = styled.div`
   h1 {
     text-spacing: 1px;
     font-size: 30px;
     font-weight: 500;
     color: white;
   }
+  @media (max-width: 768px) {
+    h1 {
+      text-spacing: 1px;
+      font-size: 20px;
+      font-weight: 500;
+      color: white;
+    }
+  }
+`;
+const DescB = styled.div`
   p {
     color: white;
     font-size: 12px;
     letter-spacing: 1px;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  @media (max-width: 768px) {
+    p {
+      color: white;
+      font-size: 10px;
+      letter-spacing: 1px;
+      justify-content: center;
+      margin-top: 5px;
+    }
   }
 `;
-
 const DetailsButtonGroups = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 30px;
-  justify-content: space-between;
+  justify-content: center;
   cursor: pointer;
+`;
+
+const DetailsGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const OrderNow = styled.div`
@@ -170,4 +226,7 @@ const OrderNow = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 400px;
+  }
 `;
