@@ -1,14 +1,16 @@
 import React from 'react'
 import Section from './Section';
 import styled from 'styled-components';
+import Header from './Header';
 
 function Model3() {
     document.title = "Model 3 | Tesla";
   return (
     <Container>
+      <Header />
       <Section
         title="Model 3"
-        backgroundImage="Model-3-Detail.jpeg"
+        backgroundImage="model-3.jpeg"
         desc2a="358 mi"
         desc2b="Range(EPA est.)"
         desc1a="3.1 s"

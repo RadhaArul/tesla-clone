@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import LanguageIcon from "@material-ui/icons/Language";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
-function Login() {
-  document.title = "Tesla SSO - Sign In";
+
+function Signup() {
   const navigate = useNavigate();
-  const [signinEmail, setSigninEmail] = useState("");
-  const [signinPassword, setSigninPassword] = useState("");
-  const [error, setError] = useState("");
-  const { signIn } = useUserAuth();
-  const signin = async (e) => {
+  const [registerFirstName, setRegisterFirstName] = useState("");
+  const [registerLastName, setRegisterLastName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [error,setError]=useState("");
+  const {signUp} =useUserAuth();
+  document.title = "Tesla SSO - Sign Up";
+  const register = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      await signIn(signinEmail, signinPassword);
+      await signUp(
+        registerEmail,
+        registerPassword
+      );
 
       navigate("/dashboard");
     } catch (err) {
@@ -22,7 +29,6 @@ function Login() {
       setError(err.message);
     }
   };
-
   return (
     <Container>
       <Menu>
@@ -37,14 +43,32 @@ function Login() {
         </RightMenu>
       </Menu>
       <Content>
-        <h1>Sign In</h1>
-        {error && <alert>{error}</alert>}
+        <h1>Create Account</h1>
+        {error && <alert >{error}</alert> }
+        <FirstName>
+          <label>First Name</label>
+          <input
+            type="text"
+            onChange={(event) => {
+              setRegisterFirstName(event.target.value);
+            }}
+          />
+        </FirstName>
+        <LastName>
+          <label>Last Name</label>
+          <input
+            type="text"
+            onChange={(event) => {
+              setRegisterLastName(event.target.value);
+            }}
+          />
+        </LastName>
         <EmailAddress>
           <label>Email Address</label>
           <input
             type="Email"
             onChange={(event) => {
-              setSigninEmail(event.target.value);
+              setRegisterEmail(event.target.value);
             }}
           />
         </EmailAddress>
@@ -53,24 +77,25 @@ function Login() {
           <input
             type="password"
             onChange={(event) => {
-              setSigninPassword(event.target.value);
+              setRegisterPassword(event.target.value);
             }}
           />
         </Password>
-        <button onClick={signin}>Sign In</button>
+        <button onClick={register}>Create Account</button>
         <Or>
           <hr></hr>
           <span>OR</span>
           <hr></hr>
         </Or>
-        <CreateAccount href="signup">Create Account</CreateAccount>
+        <Signin href="login">Sign In</Signin>
       </Content>
     </Container>
   );
 }
 
-export default Login;
-const CreateAccount = styled.a`
+export default Signup;
+
+const Signin = styled.a`
   margin: 20px;
   width: 300px;
   background-color: white;
@@ -90,6 +115,7 @@ const CreateAccount = styled.a`
 `;
 const Container = styled.div`
   height: 100vh;
+  overflow-x: hidden;
 `;
 
 const Menu = styled.div`
@@ -116,8 +142,8 @@ const RightMenu = styled.div`
   }
 `;
 const Content = styled.div`
-  alert {
-    color: red;
+  alert{
+    color:red;
   }
   display: flex;
   align-items: center;
@@ -165,6 +191,8 @@ const EmailAddress = styled.div`
     font-size: 16px;
   }
 `;
+const FirstName = styled(EmailAddress)``;
+const LastName = styled(EmailAddress)``;
 const Password = styled(EmailAddress)``;
 
 const Or = styled.div`

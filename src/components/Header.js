@@ -17,22 +17,17 @@ function Header() {
         <img src="/images/logo.svg" alt="" />
       </a>
       <Menu>
-        {/*  {cars &&
-          cars.map((car, index) => (
-            <a key={index} href="#">
-              {car}{" "}
+          {cars &&
+          cars.map((car) => (
+            <a key={car.id+car.name} href={car.id}>
+              {car.name}{" "}
             </a>
-          ))} */}
-        <a href="/models">Model S</a>
-        <a href="/model3">Model 3</a>
-        <a href="#">Model X</a>
-        <a href="#">Model Y</a>
-        <a href="#">Solar Roof</a>
-        <a href="#">Solar Panels</a>
+          ))} 
+        
       </Menu>
       <RightMenu>
         <a href="#">Shop</a>
-        <a href="#">Account</a>
+        <a href="dashboard">Account</a>
         <HamburgerIcon onClick={() => setBurgerStatus(true)} />
       </RightMenu>
       <BurgerNav show={burgerStatus}>
@@ -41,10 +36,10 @@ function Header() {
         </XButtonWrapper>
 
         {sideMenus &&
-          sideMenus.map((sideMenu, index) => (
-            <li>
-              <a key={index} href="#">
-                {sideMenu}
+          sideMenus.map((sideMenu) => (
+            <li key={sideMenu.id}>
+              <a key={sideMenu.id} href="#">
+                {sideMenu.name}
               </a>
             </li>
           ))}
